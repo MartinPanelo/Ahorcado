@@ -1,3 +1,15 @@
+body{
+  margin: 0px;
+}
+.container{
+  margin:0px;
+  width: 100vw;
+  height: 100vh;
+  display: flex;                  /*  <-------------- required               */
+  flex-direction: column;         /*  <-------------- required               */
+  justify-content: space-between;    /*  <-------------- required               */
+}
+
 * {
   font-family: "Roboto", sans-serif;
   font-size: 20px;
@@ -13,7 +25,7 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  margin: 80px;
+  margin: 30px;
 }
 .menu a {
   border-radius: 24px;
@@ -28,10 +40,11 @@
 }
 
 .botonUno {
-  margin: 20px;
+  margin-bottom: 20px;  
   background: #0a3871;
   color: rgb(255, 255, 255);
-  padding: 40px 100px;
+  padding: 30px 100px;
+  cursor: pointer;
 }
 .botonDos {
   margin: 20px;
@@ -39,21 +52,41 @@
   border: 1px solid #0a3871;
   color: rgb(35, 35, 35);
   padding: 20px 35px;
+  cursor: pointer;
 }
 
 .pieDePagina hr {
+ 
   width: 75%;
   background-color: rgba(151, 151, 151, 1);
   border: 1px solid rgba(151, 151, 151, 1);
+  margin-top: 15px;
+}
+.iconos *{
 
-
-
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .pieDePagina {
-  display: flex;
-  background: rgb(180, 51, 51);
-  padding: 10px;
-  flex-direction: column;
-  align-items: center;
+ 
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(242, 241, 254,1), rgba(221, 225, 254,1), rgba(199, 212, 255,1), rgba(173, 201, 255,1)); 
+    display: flex; 
+   flex-direction: column; 
+  align-items: center; 
+ 
+
+/*  left: 0px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;   */
+   height: 120px; 
+ } 
+
+
+.lista{
+ /*  js: display:flex; */
+  justify-content:space-around;
+  flex-direction: row;
+ /*  align-items: center; */
 }
