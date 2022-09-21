@@ -5,8 +5,8 @@ let dic = document.getElementById("d");
 let list = document.getElementById("myList");
 /* --------------------------------- */
 
-let palabras = ["HOLA", "CHAU", "MARMOTA"];
-
+let palabras = ['HOLA', 'CHAU', 'MARMOTA'];
+var mi_array = ['cero', 'uno', 'dos', 'tres', 'cuatro'];
 init();
 
 
@@ -16,21 +16,39 @@ function init(){
     d.style.display = 'none'; // 'none'
 }
 
+function borrar(b){
 
+    palabras.splice(b,b+1);
+   
+
+   
+   list.removeChild(list.childNodes[b]);
+    
+}
 
 function glosario(){
     menu.style.display = 'none'; // 'none'
     d.style.display = 'flex'; // 'none'
  
 
-    palabras.forEach((item) => {
-        let li = document.createElement("li");
-        li.innerText = item;
-        list.appendChild(li);
+    palabras.forEach((item,index) => {
+
+        let b = document.createElement("button");
+      
+        b.innerHTML = "Borrar";
+       
+        b.addEventListener("click", function () {
+            borrar(index);
+          });
+
+        let ul = document.createElement("ul");
+        
+        ul.innerText = item;
+        list.appendChild(ul);
+        ul.appendChild(b);
       });
+    
 }
-
-
 
 
 
