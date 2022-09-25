@@ -82,8 +82,21 @@ body{
   width: 100%;   */
    height: 120px; 
  } 
-
-
+ .contenedor-lista::-webkit-scrollbar {
+  display: none;
+}
+.contenedor-lista{
+  
+  
+  width: 35%;
+ 
+  height: 250px;
+  overflow-y: scroll;
+ 
+}
+ol {
+  padding-left: 0px;
+}
 .lista{
  /*  js: display:flex; */
   justify-content:space-around;

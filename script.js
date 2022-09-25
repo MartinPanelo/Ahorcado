@@ -3,16 +3,29 @@ let button2 = document.getElementById("BDos");
 let menu = document.getElementById("menu");
 let dic = document.getElementById("d");
 let list = document.getElementById("myList");
+
 /* --------------------------------- */
 
 let palabras = ["HOLA", "CHAU", "MARMOTA"];
-var mi_array = ["cero", "uno", "dos", "tres", "cuatro"];
+// var mi_array = ["cero", "uno", "dos", "tres", "cuatro"];
 init();
 
 function init() {
   menu.style.display = "visibility"; // 'none'
   d.style.display = "none"; // 'none'
 }
+
+function agregarPalabra(){
+
+  
+  
+  palabras.push(document.getElementById("input1").value);
+
+ glosario();
+}
+
+
+
 
 function borrar(b) {
   palabras.splice(b, 1);
@@ -40,6 +53,7 @@ function glosario() {
 
     list.appendChild(ul);
     ul.appendChild(b);
+    
   });
 }
 
