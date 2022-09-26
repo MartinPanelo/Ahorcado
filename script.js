@@ -11,8 +11,10 @@ let palabras = ["HOLA", "CHAU", "MARMOTA"];
 init();
 
 function init() {
-  menu.style.display = "visibility"; // 'none'
-  d.style.display = "none"; // 'none'
+
+  modulos(1);
+ /*  menu.style.display = "visibility"; // 'none'
+  d.style.display = "none"; // 'none' */
 }
 
 function agregarPalabra(){
@@ -35,8 +37,8 @@ function borrar(b) {
 }
 
 function glosario() {
-  menu.style.display = "none"; // 'none'
-  d.style.display = "flex"; // 'none'
+ 
+  modulos(2);
   list.innerHTML = "";
 
   palabras.forEach((item, index) => {
@@ -56,5 +58,18 @@ function glosario() {
     
   });
 }
+
+function modulos(modulo){
+
+  if(modulo == 1){ // menu principal
+    menu.style.display = "flex"; // 'none'
+    d.style.display = "none"; // 'none'
+  }
+  if(modulo == 2){ // agregar palabras}
+    menu.style.display = "none"; // 'none'
+    d.style.display = "block"; // 'none'
+  }
+}
+
 
 button2.onclick = glosario;
