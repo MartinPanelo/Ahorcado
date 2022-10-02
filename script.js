@@ -44,7 +44,7 @@ function glosario() {
   palabras.forEach((item, index) => {
     let b = document.createElement("button");
     let ul = document.createElement("ul");
-
+    b.setAttribute("class","botonTres");
     b.innerHTML = "Borrar";
 
     b.addEventListener("click", function () {
