@@ -1,6 +1,7 @@
 let button1 = document.getElementById("BUno");
 let button2 = document.getElementById("BDos");
 let menu = document.getElementById("menu");
+let juego = document.getElementById("j");
 let dic = document.getElementById("d");
 let list = document.getElementById("myList");
 
@@ -9,6 +10,8 @@ let list = document.getElementById("myList");
 let palabras = ["HOLA", "CHAU", "MARMOTA"];
 // var mi_array = ["cero", "uno", "dos", "tres", "cuatro"];
 init();
+
+
 
 function init() {
 
@@ -64,12 +67,24 @@ function modulos(modulo){
   if(modulo == 1){ // menu principal
     menu.style.display = "flex"; // 'none'
     d.style.display = "none"; // 'none'
+    juego.style.display = "none"; 
   }
   if(modulo == 2){ // agregar palabras}
     menu.style.display = "none"; // 'none'
     d.style.display = "block"; // 'none'
+    juego.style.display = "none"; 
   }
+  if(modulo == 3){ // entra al juego}
+    menu.style.display = "none"; // 'none'
+    d.style.display = "none"; // 'none'
+    juego.style.display = "block"; 
+  }
+
 }
 
 
+
+
+
 button2.onclick = glosario;
+
