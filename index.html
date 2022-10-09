@@ -29,17 +29,23 @@
 
       <div id="j">
 
-        <div> 
+        <div class="grafico"> 
 
-          aca va el juego
+          <canvas id="micanvas" width="500px" height="300px">
+           
+            Tu navegador no soporta canvas. <!-- Mensaje para mostrar si el navegador no soporta la etiqueta canvas -->
+        </canvas>
+        <div id="salida"></div>
         </div>
-        <div class="volvermenu">
-          <a onclick="modulos(1)">Volver al menu</a>
+        <div class="menujuego volvermenu ">
+          <a onclick="modulos(1)">Desistir</a>
+          <a onclick="empiezaJuego()">Nuevo juego</a>
         </div>
       </div>
 
 
       <div id="d">
+        
         <div class="lista">
           <div class="contenedor-agregar">
             <p><label>Agregar una palabra</label></p>
