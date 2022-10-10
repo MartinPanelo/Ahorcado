@@ -6,6 +6,8 @@ let dic = document.getElementById("d");
 let list = document.getElementById("myList");
 
 let letrasTocadas = [20];
+let letrasAcertadas = 0;
+let vidas = 10;
 
 
 var c = document.getElementById("micanvas");
@@ -28,13 +30,13 @@ function init() {
 
 function agregarPalabra() {
     palabraAux = document.getElementById("input1").value;
-
+    palabraAux = palabraAux.toUpperCase();
     if (palabraAux.indexOf(" ") != -1) {
         alert("Solo esta permitido ingresar de a una palabra");
     } else if (palabras.indexOf(document.getElementById("input1").value) != -1) {
         alert("Error, palabra duplicada");
     } else {
-        palabras.push(document.getElementById("input1").value);
+        palabras.push(palabraAux);
 
         glosario();
     }
@@ -97,8 +99,12 @@ document.addEventListener("keydown", e =>{
 	
   console.log(e);
   /* salida.innerHTML += e.key; + '<br />'; */
-  
-  letratocada(e.key);
+  console.log(e.key.toUpperCase());
+ // if(e.key !== "Shift" && e.key !== "Control" && e.key !== "Alt" && e.key !== "CapsLock"&& e.key !== "Meta"){
+  if(e.keyCode > 64 && e.keyCode < 90 || e.keyCode > 97 && e.keyCode < 122){
+ letratocada(e.key.toUpperCase());
+  }
+ 
 
 });
 
@@ -110,6 +116,7 @@ function letratocada(key) {
   cxt.font = "25px bold Roboto, sans-serif";
   console.log(letrasTocadas);
 
+  let unavida = true;
   
 
 
@@ -118,16 +125,108 @@ function letratocada(key) {
     letrasTocadas[letrasTocadas.length] = key;
     cxt.fillText(key,letrasTocadas.length *20 +((500/3) - (palabraParaJugar.length * 20)) ,280); // Texto contornos
 
-   
+    console.log(palabraParaJugar.search(key) == -1);
+     for(var i = 0; i < palabraParaJugar.length ; i++){ 
+
+     
+      if(palabraParaJugar[i] === key){
+        cxt.fillText(key,(500/2) - (palabraParaJugar.length * 20)+(i*40) ,245); // Texto contornos
+        letrasAcertadas += 1;
+        unavida = false;
+        console.log("letrasAcertadas"+letrasAcertadas);
+        console.log(" palabraParaJugar.length"+ palabraParaJugar.length);
+        
+      }else{
+        cxt.fillText(" ",(500/2) - (palabraParaJugar.length * 20)+(i*40) ,245); // Texto contornos
+        
+        
+        
+        
+      
+      }
+
+    }
+    if(unavida){
+      vidas -= 1;
+  // dibujo al bicho
+     if(vidas == 9){
+      ctx.beginPath();
+      ctx.moveTo(50, 200);
+      ctx.lineTo(150, 200);
+      ctx.stroke();
+     }
+     if(vidas == 8){
+      ctx.beginPath();
+      ctx.moveTo(100, 200);
+      ctx.lineTo(100, 50);
+      ctx.stroke();
+     }
+     if(vidas == 7){
+      ctx.beginPath();
+      ctx.moveTo(100, 50);
+      ctx.lineTo(200, 50);
+      ctx.stroke();
+     }
+     if(vidas == 6){
+      ctx.beginPath();
+
+     /*  ctx.arc(200, 70, 20, 0, 90); */
+      ctx.moveTo(200, 50);
+      ctx.lineTo(200, 70);
+      ctx.stroke();
+     }
+     if(vidas == 5){
+      ctx.beginPath();
+      ctx.arc(200, 90, 20, 0, 90);
+      ctx.stroke();
+     }
+     if(vidas == 4){
+      ctx.beginPath();
+      ctx.moveTo(200, 110);
+      ctx.lineTo(200, 170);
+      ctx.stroke();
+     }
+     if(vidas == 3){
+      ctx.beginPath();
+      ctx.moveTo(200, 110);
+      ctx.lineTo(220, 130);
+      ctx.stroke();
+     }
+     if(vidas == 2){
+      ctx.beginPath();
+      ctx.moveTo(200, 110);
+      ctx.lineTo(180, 130);
+      ctx.stroke();
+     }
+     if(vidas == 1){
+      ctx.beginPath();
+      ctx.moveTo(200, 170);
+      ctx.lineTo(220, 190);
+      ctx.stroke();
+     }
+     if(vidas == 0){
+      ctx.beginPath();
+      ctx.moveTo(200, 170);
+      ctx.lineTo(180, 190);
+      ctx.stroke();
+      alert("PERDISTE");
+      /* empiezaJuego(); */
+     }
+    
+     
+      console.log(unavida);
+      console.log("vidas"+vidas);
+    }
+    if(letrasAcertadas == palabraParaJugar.length){
+      alert("GANASTE");
+      console.log("GANASTE");
+    }
+    
   }else{
     console.log("ya usaste esa letra");
   }
 
- /*  if(palabraParaJugar.includes(key)){
-      // agregar arriba
-  }else{
-    // dibujo al bicho
-  } */
+ 
    
 
 }
@@ -135,6 +234,9 @@ function letratocada(key) {
 
 function empiezaJuego(){
 
+  letrasAcertadas = 0;
+  vidas = 10;
+  letrasTocadas = [];
   salida.innerHTML ="";
   palabraRandom();
   var ctx = c.getContext("2d");
