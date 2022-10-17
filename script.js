@@ -13,6 +13,9 @@ let vidas = 10;
 var c = document.getElementById("micanvas");
 var cxt = c.getContext("2d");
 
+let close_button_1 = document.getElementById('close-button-1');
+let close_button_2 = document.getElementById('close-button-2');
+
 
 /* --------------------------------- */
 
@@ -26,6 +29,8 @@ function init() {
   modulos(1);
   /*  menu.style.display = "visibility"; // 'none'
    d.style.display = "none"; // 'none' */
+   document.getElementById("window-notice").style.display = "none";
+   document.getElementById("window-notice-bad").style.display = "none";
 }
 
 function agregarPalabra() {
@@ -97,6 +102,7 @@ button2.onclick = glosario;
 // esto es para capturar las teclas precionadas
 document.addEventListener("keydown", e =>{
 	
+  if(document.getElementById("window-notice").style.display != "flex" && document.getElementById("window-notice-bad").style.display != "flex"){
   console.log(e);
   /* salida.innerHTML += e.key; + '<br />'; */
   console.log(e.key.toUpperCase());
@@ -105,6 +111,7 @@ document.addEventListener("keydown", e =>{
  letratocada(e.key.toUpperCase());
   }
  
+}
 
 });
 
@@ -209,7 +216,9 @@ function letratocada(key) {
       ctx.moveTo(200, 170);
       ctx.lineTo(180, 190);
       ctx.stroke();
-      alert("PERDISTE");
+      document.getElementById("window-notice-bad").style.display = "flex";
+      
+      /* alert("PERDISTE"); */
       /* empiezaJuego(); */
      }
     
@@ -218,7 +227,9 @@ function letratocada(key) {
       console.log("vidas"+vidas);
     }
     if(letrasAcertadas == palabraParaJugar.length){
-      alert("GANASTE");
+      document.getElementById("window-notice").style.display = "flex";
+      
+     /*  alert("GANASTE"); */
       console.log("GANASTE");
     }
     
@@ -275,3 +286,17 @@ function palabraRandom(){
 
 
 }
+
+close_button_1.addEventListener("click", function(e) {
+  e.preventDefault();
+  document.getElementById("window-notice").style.display = "none";
+  empiezaJuego();
+});
+close_button_2.addEventListener("click", function(e) {
+  e.preventDefault();
+  
+  document.getElementById("window-notice-bad").style.display = "none";
+  empiezaJuego();
+});
+
+
