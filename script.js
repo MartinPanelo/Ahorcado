@@ -19,7 +19,7 @@ let close_button_2 = document.getElementById('close-button-2');
 
 /* --------------------------------- */
 
-let palabras = ["HOLA", "CHAU", "MARMOTA"];
+let palabras = ["HOLA", "CHAU", "MARMOTA", "ANACONDA", "ELEFANTE", "SOL"];
 let palabraAux;
 let palabraParaJugar;
 // var mi_array = ["cero", "uno", "dos", "tres", "cuatro"];
